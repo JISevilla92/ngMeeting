@@ -1,0 +1,41 @@
+div
+  h1.frontend-bootstrap-component-2
+    | Sign Up 
+  form(name="signUpForm", ng-controller='SignUpController as signUpCtrl', ng-submit='signUpCtrl.signUp()', novalidate)
+    | FirstName* :
+    input(ng-model='signUpCtrl.signUpForm.firstName', type='text', name='firstName', title='FirstName', ng-minlength="2", ng-maxlength="64", required)
+    br
+    span(ng-show='signUpForm.firstName.$touched && signUpForm.firstName.$invalid', class='error')
+      | FirstName length must be between 2 and 64.
+    br
+    | LastName* :
+    input(ng-model='signUpCtrl.signUpForm.lastName', type='text', name='lastName', title='LastName', ng-minlength="2", ng-maxlength="64", required)
+    br
+    span(ng-show='signUpForm.lastName.$touched && signUpForm.lastName.$invalid', class='error')
+      | LastName length must be between 2 and 64.
+    br
+    | Username* :
+    input(ng-model='signUpCtrl.signUpForm.username', type='text', name='username', title='Username', ng-minlength="2", ng-maxlength="64", required)
+    br
+    span(ng-show='signUpForm.username.$touched && signUpForm.username.$invalid', class='error')
+      | Username length must be between 2 and 64.
+    br
+    | Email* :
+    input(ng-model='signUpCtrl.signUpForm.email', type='email', name='email', title='Email', ng-minlength="8", ng-maxlength="64", required)
+    br
+    span(ng-show='signUpForm.email.$touched && signUpForm.email.$invalid', class='error')
+      | Email length must be between 8 and 64 and must be valid.
+    br
+    | Password* :
+    input(ng-model='signUpCtrl.signUpForm.password', type='password', name='password', title='Password', ng-minlength="8", ng-maxlength="32", required)
+    br
+    span(ng-show='signUpForm.password.$touched && signUpForm.password.$invalid', class='error')
+      | Password length must be between 8 and 32.
+    br
+    | Confirm Password* :
+    input(ng-model='signUpCtrl.signUpForm.confirmPassword', type='password', name='confirmPassword', title='Confirm Password', ng-minlength="8", ng-maxlength="32", required)
+    br
+    span(ng-show='signUpForm.confirmPassword.$touched && signUpForm.confirmPassword.$invalid', class='error')
+      | Password length must be between 8 and 32.
+    br
+    input(type='submit', value='Submit', ng-disabled='signUpForm.$invalid')

@@ -17,3 +17,16 @@ body {
     color: $wolox-green;
   }
 }
+
+.ng-invalid.ng-touched {
+  border-color: $form-red;
+}
+
+.error {
+  color: $form-red;
+  font-size: 12px;
+}
+
+.ng-valid.ng-touched {
+  border-color: $form-green;
+}

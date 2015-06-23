@@ -1,3 +1,3 @@
 module.exports = [
-  "bootstrap/dist/css/bootstrap.css"
+  "angular-ui-growl/css/growl.css"
 ];
