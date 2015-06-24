@@ -1,0 +1,4 @@
+div
+  h1
+    form(name="signOutForm", ng-controller='SignOutController as signOutCtrl', ng-submit='signOutCtrl.signOut()', novalidate)
+      input(type='submit', value="{{ 'SIGN_OUT' | translate }}")

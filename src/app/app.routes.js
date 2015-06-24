@@ -15,20 +15,53 @@ app.config([
 
   // Now set up the states
   $stateProvider
-    .state('signUp', {
+    .state('id', {
       abstract: true,
       views: {
         main: {
-          templateUrl: '../app/layouts/signUp/main.html'
+          templateUrl: '../app/layouts/id/main.html'
         }
       }
     })
-    .state('signUp.index', {
+    .state('id.index', {
+      url: '/home',
+      views: {
+        innerComponent: {
+          templateUrl: '../app/components/home/home.html'
+        }
+      },
+      data: {
+        requireLogin: true
+      }
+    })
+    .state('auth', {
+      abstract: true,
+      views: {
+        main: {
+          templateUrl: '../app/layouts/auth/main.html'
+        }
+      }
+    })
+    .state('auth.signUp', {
       url: '/signUp',
       views: {
         innerComponent: {
           templateUrl: '../app/components/signUp/signUp.html'
         }
+      },
+      data: {
+        requireLogin: false
+      }
+    })
+    .state('auth.signIn', {
+      url: '/signIn',
+      views: {
+        innerComponent: {
+          templateUrl: '../app/components/signIn/signIn.html'
+        }
+      },
+      data: {
+        requireLogin: false
       }
     })
     .state('state1', {
@@ -45,6 +78,9 @@ app.config([
         innerComponent: {
           templateUrl: '../app/components/component1/component1.html'
         }
+      },
+      data: {
+        requireLogin: false
       }
     });
 }]);

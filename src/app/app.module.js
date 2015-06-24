@@ -4,6 +4,7 @@ var app = angular.module( // jshint ignore:line
     'pascalprecht.translate',
     'app.config',
     'restangular',
-    'ui.growl'
+    'ui.growl',
+    'LocalStorageModule'
   ]
 );

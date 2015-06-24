@@ -1,0 +1,17 @@
+div
+  h1
+    | {{ 'SIGN_IN_FORM.SIGN_IN' | translate }}
+  form(name="signInForm", ng-controller='signInController as signInCtrl', ng-submit='signInCtrl.signIn()', novalidate)
+    | {{ 'SIGN_IN_FORM.USERNAME' | translate }} * :
+    input(ng-model='signInCtrl.signInForm.username', type='text', name='username', title='Username', ng-minlength="8", ng-maxlength="64", required)
+    br
+    span(ng-show='signInForm.username.$touched && signInForm.username.$invalid', class='error')
+      | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
+    br
+    | {{ 'SIGN_IN_FORM.PASSWORD' | translate }} * :
+    input(ng-model='signInCtrl.signInForm.password', type='password', name='password', title='Password', ng-minlength="8", ng-maxlength="32", required)
+    br
+    span(ng-show='signInForm.password.$touched && signInForm.password.$invalid', class='error')
+      | {{ 'SIGN_IN_FORM.ERROR.PASSWORD_LENGTH' | translate }}
+    br
+    input(type='submit', value="{{ 'SIGN_IN_FORM.SIGN_IN' | translate }}", ng-disabled='signInForm.$invalid')
