@@ -1,41 +1,41 @@
 div
   h1.frontend-bootstrap-component-2
-    | Sign Up 
+    | {{ 'SIGN_UP_FORM.SIGN_UP' | translate }}
   form(name="signUpForm", ng-controller='SignUpController as signUpCtrl', ng-submit='signUpCtrl.signUp()', novalidate)
-    | FirstName* :
+    | {{ 'SIGN_UP_FORM.FIRSTNAME' | translate }} * :
     input(ng-model='signUpCtrl.signUpForm.firstName', type='text', name='firstName', title='FirstName', ng-minlength="2", ng-maxlength="64", required)
     br
     span(ng-show='signUpForm.firstName.$touched && signUpForm.firstName.$invalid', class='error')
-      | FirstName length must be between 2 and 64.
+      | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
     br
-    | LastName* :
+    | {{ 'SIGN_UP_FORM.LASTNAME' | translate }} * :
     input(ng-model='signUpCtrl.signUpForm.lastName', type='text', name='lastName', title='LastName', ng-minlength="2", ng-maxlength="64", required)
     br
     span(ng-show='signUpForm.lastName.$touched && signUpForm.lastName.$invalid', class='error')
-      | LastName length must be between 2 and 64.
+      | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
     br
-    | Username* :
+    | {{ 'SIGN_UP_FORM.USERNAME' | translate }} * :
     input(ng-model='signUpCtrl.signUpForm.username', type='text', name='username', title='Username', ng-minlength="2", ng-maxlength="64", required)
     br
     span(ng-show='signUpForm.username.$touched && signUpForm.username.$invalid', class='error')
-      | Username length must be between 2 and 64.
+      | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
     br
-    | Email* :
+    | {{ 'SIGN_UP_FORM.EMAIL' | translate }} * :
     input(ng-model='signUpCtrl.signUpForm.email', type='email', name='email', title='Email', ng-minlength="8", ng-maxlength="64", required)
     br
     span(ng-show='signUpForm.email.$touched && signUpForm.email.$invalid', class='error')
-      | Email length must be between 8 and 64 and must be valid.
+      | {{ 'SIGN_UP_FORM.ERROR.EMAIL_LENGTH' | translate }}
     br
-    | Password* :
+    | {{ 'SIGN_UP_FORM.PASSWORD' | translate }} * :
     input(ng-model='signUpCtrl.signUpForm.password', type='password', name='password', title='Password', ng-minlength="8", ng-maxlength="32", required)
     br
     span(ng-show='signUpForm.password.$touched && signUpForm.password.$invalid', class='error')
-      | Password length must be between 8 and 32.
+      | {{ 'SIGN_UP_FORM.ERROR.PASSWORD_LENGTH' | translate }}
     br
-    | Confirm Password* :
+    | {{ 'SIGN_UP_FORM.CONFIRM_PASSWORD' | translate }} * :
     input(ng-model='signUpCtrl.signUpForm.confirmPassword', type='password', name='confirmPassword', title='Confirm Password', ng-minlength="8", ng-maxlength="32", required)
     br
     span(ng-show='signUpForm.confirmPassword.$touched && signUpForm.confirmPassword.$invalid', class='error')
-      | Password length must be between 8 and 32.
+      | {{ 'SIGN_UP_FORM.ERROR.PASSWORD_LENGTH' | translate }}
     br
-    input(type='submit', value='Submit', ng-disabled='signUpForm.$invalid')
+    input(type='submit', value="{{ 'SIGN_UP_FORM.SIGN_UP' | translate }}", ng-disabled='signUpForm.$invalid')
