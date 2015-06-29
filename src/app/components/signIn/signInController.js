@@ -1,12 +1,11 @@
-angular.module('app').controller('signInController', [ 'userService', '$growl', '$state', 'localStorageService',
-function(userService, $growl, $state, localStorageService) {
+angular.module('app').controller('signInController', [ 'userService', '$growl', '$state', 
+function(userService, $growl, $state) {
   
   this.signInForm = {};
   
   this.signIn = () => {
 
     let success = (obj) => {
-      localStorageService.set('session_token', obj.sessionToken);
       $state.go('id.index');
     };
 

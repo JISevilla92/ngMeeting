@@ -1,12 +1,31 @@
 app.config([
-  '$stateProvider', '$urlRouterProvider', 'RestangularProvider', 'configuration',
-  function($stateProvider, $urlRouterProvider, RestangularProvider, configuration) {
+  '$stateProvider', '$urlRouterProvider', 'RestangularProvider', 'configuration', "$httpProvider", "usSpinnerConfigProvider",
+  function($stateProvider, $urlRouterProvider, RestangularProvider, configuration, $httpProvider, usSpinnerConfigProvider) {
 
   // Restangular configuration
   RestangularProvider.setBaseUrl('https://api.parse.com/1');
   RestangularProvider.setDefaultHeaders({'Content-Type': 'application/json',
                   'X-Parse-Application-Id': configuration.parseApplicationId,
                   'X-Parse-REST-API-Key': configuration.parseRestAPIKey});
+
+  // Spinner
+  $httpProvider.interceptors.push('spinnerInterceptor');
+  usSpinnerConfigProvider.setDefaults(
+    {
+      lines: 9,
+      length: 10,
+      width: 14,
+      radius: 29,
+      scale: 1.00,
+      corners: 1.0,
+      opacity: 0.25,
+      rotate: 0,
+      direction: 1,
+      speed: 0.7,
+      trail: 27,
+      shadow: true
+    }
+  );
 
   // For any unmatched urls
   $urlRouterProvider.otherwise( ($injector) => {
@@ -28,6 +47,17 @@ app.config([
       views: {
         innerComponent: {
           templateUrl: '../app/components/home/home.html'
+        }
+      },
+      data: {
+        requireLogin: true
+      }
+    })
+    .state('id.profile', {
+      url: '/profile',
+      views: {
+        innerComponent: {
+          templateUrl: '../app/components/profile/profile.html'
         }
       },
       data: {

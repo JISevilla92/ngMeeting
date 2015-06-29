@@ -1,1 +1,6 @@
+nav(class="navbar navbar-inverse", ng-controller='HeaderController as headerCtrl')
+  ul(class="nav navbar-nav navbar-left")
+    li
+      a(ui-sref='id.profile')
+        | {{ headerCtrl.user.firstName }}
 .center(ui-view='innerComponent')

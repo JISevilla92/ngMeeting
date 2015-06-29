@@ -1,10 +1,9 @@
-angular.module('app').controller('SignOutController', [ 'userService', '$growl', '$state', 'localStorageService',
-function(userService, $growl, $state, localStorageService) {
+angular.module('app').controller('SignOutController', [ 'userService', '$growl', '$state', 
+function(userService, $growl, $state) {
 
   this.signOut = () => {
 
     let success = (obj) => {
-      localStorageService.remove('session_token');
       $state.go('auth.signIn');
     };
 

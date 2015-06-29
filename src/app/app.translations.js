@@ -4,6 +4,14 @@ app.config([
 
   $translateProvider.translations('es', {
     COMPONENT_1_PHRASE: 'Esta es la componente 1',
+    PROFILE: {
+      CREATION: 'Fecha de alta',
+      EMAIL: 'Email',
+      FIRSTNAME: 'Nombre',
+      LASTNAME: 'Apellido',
+      TITLE: 'Mi Perfil',
+      USERNAME: 'Nombre de usuario'
+    },
     SIGN_IN_FORM: {
       ERROR: {
         NAME_LENGTH: 'Longitud inválida: debería ser de entre 2 y 64 caracteres.',

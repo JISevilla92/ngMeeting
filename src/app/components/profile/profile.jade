@@ -1,0 +1,20 @@
+div(ng-controller="ProfileController as profileCtrl")
+  h1.title
+    | {{ 'PROFILE.TITLE' | translate }} 
+  us-spinner(spinner-key='spinner')
+  div.well
+    h4
+      | {{ 'PROFILE.FIRSTNAME' | translate }}
+    {{ profileCtrl.user.firstName }}
+    h4.title
+      | {{ 'PROFILE.LASTNAME' | translate }}
+    {{ profileCtrl.user.lastName }}
+    h4.title
+      | {{ 'PROFILE.USERNAME' | translate }}
+    {{ profileCtrl.user.username }}
+    h4.title
+      | {{ 'PROFILE.EMAIL' | translate }}
+    {{ profileCtrl.user.email }}
+    h4.title
+      | {{ 'PROFILE.CREATION' | translate }}
+    {{ profileCtrl.user.createdAt }}

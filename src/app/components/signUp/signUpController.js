@@ -7,11 +7,7 @@ function(userService, $growl, $state) {
 	this.signUp = () => {
 
     let success = (obj) => {
-      $growl.box('Great!', 'Account created!', {
-        class: 'success',
-        timeout: 3000
-      }).open();
-      $state.go('auth.signIn');
+      $state.go('id.index');
     };
 
     let failure = (err) => {

@@ -5,6 +5,7 @@ var app = angular.module( // jshint ignore:line
     'app.config',
     'restangular',
     'ui.growl',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'angularSpinner'
   ]
 );
