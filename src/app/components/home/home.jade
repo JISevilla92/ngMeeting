@@ -1,4 +1,5 @@
 div
-  h1
-    form(name="signOutForm", ng-controller='SignOutController as signOutCtrl', ng-submit='signOutCtrl.signOut()', novalidate)
-      input(type='submit', value="{{ 'SIGN_OUT' | translate }}")
+  h1.frontend-bootstrap-component-1
+    {{ 'COMPONENT_1_PHRASE' | translate }}
+  form.title(name="signOutForm", ng-controller='SignOutController as signOutCtrl', ng-submit='signOutCtrl.signOut()', novalidate)
+    input.btn.btn-info(type='submit', value="{{ 'SIGN_OUT' | translate }}")

@@ -5,5 +5,6 @@ module.exports = [
   'angular-translate/angular-translate.min.js',
   'restangular/dist/restangular.min.js',
   'angular-ui-growl/src/growl.js',
-  'angular-local-storage/dist/angular-local-storage.min.js'
+  'angular-local-storage/dist/angular-local-storage.min.js',
+  'bootstrap/dist/js/bootstrap.min.js'
 ];

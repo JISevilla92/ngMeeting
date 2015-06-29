@@ -1,41 +1,53 @@
 div
   h1
     | {{ 'SIGN_UP_FORM.SIGN_UP' | translate }}
-  form(name="signUpForm", ng-controller='SignUpController as signUpCtrl', ng-submit='signUpCtrl.signUp()', novalidate)
-    | {{ 'SIGN_UP_FORM.FIRSTNAME' | translate }} * :
-    input(ng-model='signUpCtrl.signUpForm.firstName', type='text', name='firstName', title='FirstName', ng-minlength="2", ng-maxlength="64", required)
+  form.form-inline.title(name="signUpForm", ng-controller='SignUpController as signUpCtrl', ng-submit='signUpCtrl.signUp()', novalidate)
+    .form-group.title
+      label.control-label
+        | {{ 'SIGN_UP_FORM.FIRSTNAME' | translate }} * :
+      input.form-control(ng-model='signUpCtrl.signUpForm.firstName', type='text', name='firstName', title='FirstName', ng-minlength="2", ng-maxlength="64", required)
+      br
+      span.error(ng-show='signUpForm.firstName.$touched && signUpForm.firstName.$invalid')
+        | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
     br
-    span(ng-show='signUpForm.firstName.$touched && signUpForm.firstName.$invalid', class='error')
-      | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
+    .form-group.title
+      label.control-label
+        | {{ 'SIGN_UP_FORM.LASTNAME' | translate }} * :
+      input.form-control(ng-model='signUpCtrl.signUpForm.lastName', type='text', name='lastName', title='LastName', ng-minlength="2", ng-maxlength="64", required)
+      br
+      span.error(ng-show='signUpForm.lastName.$touched && signUpForm.lastName.$invalid')
+        | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
     br
-    | {{ 'SIGN_UP_FORM.LASTNAME' | translate }} * :
-    input(ng-model='signUpCtrl.signUpForm.lastName', type='text', name='lastName', title='LastName', ng-minlength="2", ng-maxlength="64", required)
+    .form-group.title
+      label.control-label
+        | {{ 'SIGN_UP_FORM.USERNAME' | translate }} * :
+      input.form-control(ng-model='signUpCtrl.signUpForm.username', type='text', name='username', title='Username', ng-minlength="2", ng-maxlength="64", required)
+      br
+      span.error(ng-show='signUpForm.username.$touched && signUpForm.username.$invalid')
+        | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
     br
-    span(ng-show='signUpForm.lastName.$touched && signUpForm.lastName.$invalid', class='error')
-      | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
+    .form-group.title
+      label.control-label
+        | {{ 'SIGN_UP_FORM.EMAIL' | translate }} * :
+      input.form-control(ng-model='signUpCtrl.signUpForm.email', type='email', name='email', title='Email', ng-minlength="8", ng-maxlength="64", required)
+      br
+      span.error(ng-show='signUpForm.email.$touched && signUpForm.email.$invalid')
+        | {{ 'SIGN_UP_FORM.ERROR.EMAIL_LENGTH' | translate }}
     br
-    | {{ 'SIGN_UP_FORM.USERNAME' | translate }} * :
-    input(ng-model='signUpCtrl.signUpForm.username', type='text', name='username', title='Username', ng-minlength="2", ng-maxlength="64", required)
+    .form-group.title
+      label.control-label
+        | {{ 'SIGN_UP_FORM.PASSWORD' | translate }} * :
+      input.form-control(ng-model='signUpCtrl.signUpForm.password', type='password', name='password', title='Password', ng-minlength="8", ng-maxlength="32", required)
+      br
+      span.error(ng-show='signUpForm.password.$touched && signUpForm.password.$invalid')
+        | {{ 'SIGN_UP_FORM.ERROR.PASSWORD_LENGTH' | translate }}
     br
-    span(ng-show='signUpForm.username.$touched && signUpForm.username.$invalid', class='error')
-      | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
-    br
-    | {{ 'SIGN_UP_FORM.EMAIL' | translate }} * :
-    input(ng-model='signUpCtrl.signUpForm.email', type='email', name='email', title='Email', ng-minlength="8", ng-maxlength="64", required)
-    br
-    span(ng-show='signUpForm.email.$touched && signUpForm.email.$invalid', class='error')
-      | {{ 'SIGN_UP_FORM.ERROR.EMAIL_LENGTH' | translate }}
-    br
-    | {{ 'SIGN_UP_FORM.PASSWORD' | translate }} * :
-    input(ng-model='signUpCtrl.signUpForm.password', type='password', name='password', title='Password', ng-minlength="8", ng-maxlength="32", required)
-    br
-    span(ng-show='signUpForm.password.$touched && signUpForm.password.$invalid', class='error')
-      | {{ 'SIGN_UP_FORM.ERROR.PASSWORD_LENGTH' | translate }}
-    br
-    | {{ 'SIGN_UP_FORM.CONFIRM_PASSWORD' | translate }} * :
-    input(ng-model='signUpCtrl.signUpForm.confirmPassword', type='password', name='confirmPassword', title='Confirm Password', ng-minlength="8", ng-maxlength="32", required)
-    br
-    span(ng-show='signUpForm.confirmPassword.$touched && signUpForm.confirmPassword.$invalid', class='error')
-      | {{ 'SIGN_UP_FORM.ERROR.PASSWORD_LENGTH' | translate }}
-    br
-    input(type='submit', value="{{ 'SIGN_UP_FORM.SIGN_UP' | translate }}", ng-disabled='signUpForm.$invalid')
+    .form-group.title
+      label.control-label
+        | {{ 'SIGN_UP_FORM.CONFIRM_PASSWORD' | translate }} * :
+      input.form-control(ng-model='signUpCtrl.signUpForm.confirmPassword', type='password', name='confirmPassword', title='Confirm Password', ng-minlength="8", ng-maxlength="32", required)
+      br
+      span.error(ng-show='signUpForm.confirmPassword.$touched && signUpForm.confirmPassword.$invalid')
+        | {{ 'SIGN_UP_FORM.ERROR.PASSWORD_LENGTH' | translate }}
+    .title
+      input.btn.btn-info(type='submit', value="{{ 'SIGN_UP_FORM.SIGN_UP' | translate }}", ng-disabled='signUpForm.$invalid')
