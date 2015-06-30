@@ -8,6 +8,7 @@ function(Restangular, localStorageService) {
 
       let successCb = (obj) => {
         localStorageService.set('session_token', obj.sessionToken);
+        localStorageService.set('object_id', obj.objectId);
         loggedUser = obj;
         success(obj);
        };
@@ -18,6 +19,7 @@ function(Restangular, localStorageService) {
 
       let successCb = (obj) => {
         localStorageService.set('session_token', obj.sessionToken);
+        localStorageService.set('object_id', obj.objectId);
         loggedUser = obj;
         success(obj);
        };
@@ -31,7 +33,7 @@ function(Restangular, localStorageService) {
         loggedUser = null;
         success(obj);
       };
-       
+
       return Restangular.all('logout').post(undefined, {}, {'X-Parse-Session-Token': localStorageService.get('session_token')}).then(successCb, failure);
     },
     isAuth: () => {
@@ -42,6 +44,18 @@ function(Restangular, localStorageService) {
         loggedUser = Restangular.all('users').customGET('me', {}, {'X-Parse-Session-Token': localStorageService.get('session_token')}).$object;
       }
       return loggedUser;
+    },
+    editUserInfo: (info, success, failure) => {
+
+      let successCb = (obj) => {
+        loggedUser.firstName = info.firstName;
+        loggedUser.lastName = info.lastName;
+        loggedUser.username = info.username;
+        loggedUser.email = info.email;
+        success(obj);
+       };
+
+      return Restangular.all('users').customPUT(info, localStorageService.get('object_id'), undefined, {'X-Parse-Session-Token': localStorageService.get('session_token')}).then(successCb, failure);
     }
   };
 

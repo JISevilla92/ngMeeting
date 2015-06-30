@@ -3,7 +3,9 @@ app.config([
   function($translateProvider) {
 
   $translateProvider.translations('es', {
+    CANCEL: 'Cancelar',
     COMPONENT_1_PHRASE: 'Esta es la componente 1',
+    EDIT: 'Editar',
     PROFILE: {
       CREATION: 'Fecha de alta',
       EMAIL: 'Email',
@@ -12,6 +14,7 @@ app.config([
       TITLE: 'Mi Perfil',
       USERNAME: 'Nombre de usuario'
     },
+    SAVE: 'Guardar',
     SIGN_IN_FORM: {
       ERROR: {
         NAME_LENGTH: 'Longitud inválida: debería ser de entre 2 y 64 caracteres.',

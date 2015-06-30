@@ -3,18 +3,46 @@ div(ng-controller="ProfileController as profileCtrl")
     | {{ 'PROFILE.TITLE' | translate }} 
   us-spinner(spinner-key='spinner')
   div.well
-    h4
-      | {{ 'PROFILE.FIRSTNAME' | translate }}
-    {{ profileCtrl.user.firstName }}
-    h4.title
-      | {{ 'PROFILE.LASTNAME' | translate }}
-    {{ profileCtrl.user.lastName }}
-    h4.title
-      | {{ 'PROFILE.USERNAME' | translate }}
-    {{ profileCtrl.user.username }}
-    h4.title
-      | {{ 'PROFILE.EMAIL' | translate }}
-    {{ profileCtrl.user.email }}
-    h4.title
-      | {{ 'PROFILE.CREATION' | translate }}
-    {{ profileCtrl.user.createdAt }}
+    form.form-inline(name="userDataForm", ng-submit='profileCtrl.submitEdition();', novalidate)
+      div
+        h4
+          | {{ 'PROFILE.FIRSTNAME' | translate }}
+        div.form-group
+          input.form-control(ng-disabled='!profileCtrl.editing', ng-model='profileCtrl.user.firstName', type='text', name='firstName', title='FirstName', ng-minlength="2", ng-maxlength="64", required)
+          br
+          span.error(ng-show='signUpForm.firstName.$touched && signUpForm.firstName.$invalid')
+            | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
+      div
+        h4.title
+          | {{ 'PROFILE.LASTNAME' | translate }}
+        div.form-group
+          input.form-control(ng-disabled='!profileCtrl.editing', ng-model='profileCtrl.user.lastName', type='text', name='lastName', title='LastName', ng-minlength="2", ng-maxlength="64", required)
+          br
+          span.error(ng-show='signUpForm.lastName.$touched && signUpForm.lastName.$invalid')
+            | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
+      div
+        h4.title
+          | {{ 'PROFILE.USERNAME' | translate }}
+        div.form-group
+          input.form-control(ng-disabled='!profileCtrl.editing', ng-model='profileCtrl.user.username', type='text', name='username', title='Username', ng-minlength="2", ng-maxlength="64", required)
+          br
+          span.error(ng-show='signUpForm.username.$touched && signUpForm.username.$invalid')
+            | {{ 'SIGN_UP_FORM.ERROR.NAME_LENGTH' | translate }}
+      div
+        h4.title
+          | {{ 'PROFILE.EMAIL' | translate }}
+        div.form-group
+          input.form-control(ng-disabled='!profileCtrl.editing', ng-model='profileCtrl.user.email', type='text', name='email', title='Email', ng-minlength="2", ng-maxlength="64", required)
+          br
+          span.error(ng-show='signUpForm.email.$touched && signUpForm.email.$invalid')
+            | {{ 'SIGN_UP_FORM.ERROR.EMAIL_LENGTH' | translate }}
+      div
+        h4.title
+          | {{ 'PROFILE.CREATION' | translate }}
+        div.form-group
+          input.form-control(ng-disabled='true', ng-model='profileCtrl.user.createdAt', type='text', name='username', title='Username', ng-minlength="2", ng-maxlength="64", required)
+      button.btn.btn-danger.title(type='button', ng-click='profileCtrl.cancelEditData();', ng-show='profileCtrl.editing')
+        | {{ 'CANCEL' | translate }} 
+      input.btn.btn-success.title(type='submit', value="{{ 'SAVE' | translate }}", ng-disabled='userDataForm.$invalid', ng-show='profileCtrl.editing')
+    button.btn.btn-info.title(type='button', ng-click='profileCtrl.editData();', ng-hide='profileCtrl.editing')
+      | {{ 'EDIT' | translate }}
