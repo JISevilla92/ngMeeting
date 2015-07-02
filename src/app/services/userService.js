@@ -4,14 +4,13 @@ function(Restangular, localStorageService) {
   let loggedUser;
 
   let updateUserInfo = (info, success, failure) => {
-    return Restangular.all('users').customPUT(info, localStorageService.get('object_id'), undefined, {'X-Parse-Session-Token': localStorageService.get('session_token')}).then(success, failure);
+    return Restangular.all('users').customPUT(info, loggedUser.objectId, undefined, {'X-Parse-Session-Token': localStorageService.get('session_token')}).then(success, failure);
   };
 
   let signInPrivate = (user, success, failure) => {
 
     let successCb = (obj) => {
       localStorageService.set('session_token', obj.sessionToken);
-      localStorageService.set('object_id', obj.objectId);
       loggedUser = obj;
       success(obj);
     };
@@ -24,7 +23,6 @@ function(Restangular, localStorageService) {
 
       let successCb = (obj) => {
         localStorageService.set('session_token', obj.sessionToken);
-        localStorageService.set('object_id', obj.objectId);
         loggedUser = obj;
         success(obj);
       };
@@ -38,7 +36,6 @@ function(Restangular, localStorageService) {
 
       let successCb = (obj) => {
         localStorageService.remove('session_token');
-        localStorageService.remove('object_id');
         loggedUser = null;
         success(obj);
       };
@@ -74,7 +71,6 @@ function(Restangular, localStorageService) {
         loggedUser.password = info.password;
         info.username = loggedUser.username;
         localStorageService.remove('session_token');
-        localStorageService.remove('object_id');
         return signInPrivate(info, success, failure);
       };
 
