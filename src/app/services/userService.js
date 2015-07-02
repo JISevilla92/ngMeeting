@@ -3,6 +3,22 @@ function(Restangular, localStorageService) {
 
   let loggedUser;
 
+  let updateUserInfo = (info, success, failure) => {
+    return Restangular.all('users').customPUT(info, localStorageService.get('object_id'), undefined, {'X-Parse-Session-Token': localStorageService.get('session_token')}).then(success, failure);
+  };
+
+  let signInPrivate = (user, success, failure) => {
+
+    let successCb = (obj) => {
+      localStorageService.set('session_token', obj.sessionToken);
+      localStorageService.set('object_id', obj.objectId);
+      loggedUser = obj;
+      success(obj);
+    };
+
+    return Restangular.all('login').customGET('', user).then(successCb, failure);
+  };
+
   return {
     signUp: (user, success, failure) => {
 
@@ -16,20 +32,13 @@ function(Restangular, localStorageService) {
       return Restangular.all('users').post(user).then(successCb, failure);
     },
     signIn: (user, success, failure) => {
-
-      let successCb = (obj) => {
-        localStorageService.set('session_token', obj.sessionToken);
-        localStorageService.set('object_id', obj.objectId);
-        loggedUser = obj;
-        success(obj);
-       };
-
-      return Restangular.all('login').customGET('', user).then(successCb, failure);
+      return signInPrivate(user, success, failure);
     },
     signOut: (success, failure) => {
 
       let successCb = (obj) => {
         localStorageService.remove('session_token');
+        localStorageService.remove('object_id');
         loggedUser = null;
         success(obj);
       };
@@ -40,9 +49,11 @@ function(Restangular, localStorageService) {
       return localStorageService.get('session_token');
     },
     userInfo: () => {
+
       if (!loggedUser) {
         loggedUser = Restangular.all('users').customGET('me', {}, {'X-Parse-Session-Token': localStorageService.get('session_token')}).$object;
       }
+      
       return loggedUser;
     },
     editUserInfo: (info, success, failure) => {
@@ -55,7 +66,19 @@ function(Restangular, localStorageService) {
         success(obj);
       };
 
-      return Restangular.all('users').customPUT(info, localStorageService.get('object_id'), undefined, {'X-Parse-Session-Token': localStorageService.get('session_token')}).then(successCb, failure);
+      return updateUserInfo(info, successCb, failure);
+    },
+    editUserPassword: (info, success, failure) => {
+
+      let successCb = (obj) => {
+        loggedUser.password = info.password;
+        info.username = loggedUser.username;
+        localStorageService.remove('session_token');
+        localStorageService.remove('object_id');
+        return signInPrivate(info, success, failure);
+      };
+
+      return updateUserInfo(info, successCb, failure);
     }
   };
 

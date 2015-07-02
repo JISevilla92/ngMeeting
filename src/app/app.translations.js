@@ -4,6 +4,15 @@ app.config([
 
   $translateProvider.translations('es', {
     CANCEL: 'Cancelar',
+    CHANGE_PASSWORD: 'Cambiar contraseña',
+    CHANGE_PASSWORD_FORM: {
+      CONFIRMATION_PASSWORD: 'Confirme la contraseña',
+      ERROR: {
+        PASSWORD_LENGTH: 'Longitud inválida: debería ser de entre 8 y 32 caracteres.'
+      },
+      NEW_PASSWORD: 'Ingrese nueva contraseña',
+      TITLE: 'Cambiar contraseña'
+    },
     COMPONENT_1_PHRASE: 'Esta es la componente 1',
     EDIT: 'Editar',
     PROFILE: {

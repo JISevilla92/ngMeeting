@@ -3,7 +3,9 @@ div(ng-controller="ProfileController as profileCtrl")
     | {{ 'PROFILE.TITLE' | translate }} 
   us-spinner(spinner-key='spinner')
   div.well
-    form.form-inline(name="userDataForm", ng-submit='profileCtrl.submitEdition();', novalidate)
+    a.btn.btn.btn-default(ui-sref='id.changePassword')
+      | {{ 'CHANGE_PASSWORD' | translate }}
+    form.form-inline.title(name="userDataForm", ng-submit='profileCtrl.submitEdition();', novalidate)
       div
         h4
           | {{ 'PROFILE.FIRSTNAME' | translate }}

@@ -64,6 +64,17 @@ app.config([
         requireLogin: true
       }
     })
+    .state('id.changePassword', {
+      url: '/profile/changePassword',
+      views: {
+        innerComponent: {
+          templateUrl: '../app/components/changePassword/changePassword.html'
+        }
+      },
+      data: {
+        requireLogin: true
+      }
+    })
     .state('auth', {
       abstract: true,
       views: {
