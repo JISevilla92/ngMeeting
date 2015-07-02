@@ -1,12 +1,12 @@
-angular.module('app').controller('ChangePasswordController', [ 'userService', '$growl', '$state',
-function(userService, $growl, $state) {
+angular.module('app').controller('ChangePasswordController', [ 'userService', '$growl', '$state', '$translate',
+function(userService, $growl, $state, $translate) {
 
   this.passwordForm = {};
 
   this.changePassword = () => {
 
     let success = (obj) => {
-      $growl.box('Oops!', 'Nueva contraseña seteada', {
+      $growl.box('Oops!', $translate.instant('CHANGE_PASSWORD_FORM.SUCCESS'), {
         class: 'success',
         timeout: 3000
       }).open();
@@ -24,7 +24,7 @@ function(userService, $growl, $state) {
       delete this.passwordForm.confirmationPassword;
       userService.editUserPassword(this.passwordForm, success, failure);  
     } else {
-      $growl.box('Oops!', 'Las contraseñas deben coincidir', {
+      $growl.box('Oops!', $translate.instant('CHANGE_PASSWORD_FORM.ERROR.PASSWORD_SAME'), {
         class: 'danger',
         timeout: 3000
       }).open();

@@ -1,5 +1,5 @@
-angular.module('app').controller('SignUpController', [ 'userService', '$growl', '$state',
-function(userService, $growl, $state) {
+angular.module('app').controller('SignUpController', [ 'userService', '$growl', '$state', '$translate',
+function(userService, $growl, $state, $translate) {
 
 	this.signUpForm = {};
 
@@ -20,7 +20,12 @@ function(userService, $growl, $state) {
 		if (this.signUpForm.password === this.signUpForm.confirmPassword) {
 			delete this.signUpForm.confirmPassword;
 			userService.signUp(this.signUpForm, success, failure);  
-		}
+		} else {
+      $growl.box('Oops!', $translate.instant('SIGN_UP_FORM.ERROR.PASSWORD_SAME'), {
+        class: 'danger',
+        timeout: 3000
+      }).open();
+    }
     
 	};
 
