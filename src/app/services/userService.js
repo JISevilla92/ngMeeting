@@ -11,7 +11,7 @@ function(Restangular, localStorageService) {
         localStorageService.set('object_id', obj.objectId);
         loggedUser = obj;
         success(obj);
-       };
+      };
        
       return Restangular.all('users').post(user).then(successCb, failure);
     },
@@ -53,7 +53,7 @@ function(Restangular, localStorageService) {
         loggedUser.username = info.username;
         loggedUser.email = info.email;
         success(obj);
-       };
+      };
 
       return Restangular.all('users').customPUT(info, localStorageService.get('object_id'), undefined, {'X-Parse-Session-Token': localStorageService.get('session_token')}).then(successCb, failure);
     }

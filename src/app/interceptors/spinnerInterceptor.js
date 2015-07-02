@@ -1,4 +1,4 @@
-angular.module('app').factory('spinnerInterceptor', [ "$q", "localStorageService", "spinnerService",
+angular.module('app').factory('spinnerInterceptor', [ '$q', 'localStorageService', 'spinnerService',
   function ($q, localStorageService, spinnerService) {
 
     let numResponses = 0;

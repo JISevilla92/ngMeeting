@@ -1,4 +1,4 @@
-angular.module('app').factory('spinnerService', [ "usSpinnerService", "$timeout",
+angular.module('app').factory('spinnerService', [ 'usSpinnerService', '$timeout',
   function(usSpinnerService, $timeout) {
     return {
       start: (spinner) => {

@@ -1,5 +1,5 @@
 app.config([
-  '$stateProvider', '$urlRouterProvider', 'RestangularProvider', 'configuration', "$httpProvider", "usSpinnerConfigProvider",
+  '$stateProvider', '$urlRouterProvider', 'RestangularProvider', 'configuration', '$httpProvider', 'usSpinnerConfigProvider',
   function($stateProvider, $urlRouterProvider, RestangularProvider, configuration, $httpProvider, usSpinnerConfigProvider) {
 
   // Restangular configuration

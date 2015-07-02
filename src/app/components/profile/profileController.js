@@ -15,10 +15,10 @@ function(userService, $growl) {
   this.submitEdition = () =>{
 
     let data = {
-      "firstName": this.user.firstName,
-      "lastName": this.user.lastName,
-      "username": this.user.username,
-      "email": this.user.email
+      'firstName': this.user.firstName,
+      'lastName': this.user.lastName,
+      'username': this.user.username,
+      'email': this.user.email
     };
 
     let success = (obj) => {
