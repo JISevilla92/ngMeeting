@@ -1,7 +1,7 @@
 module.exports = [
-  'lodash/lodash.min.js',
+  'lodash/lodash.js',
   "jquery/dist/jquery.min.js",
-  'angular/angular.js', 
+  'angular/angular.js',
   'angular-ui-router/release/angular-ui-router.min.js',
   'angular-translate/angular-translate.min.js',
   'restangular/dist/restangular.min.js',
